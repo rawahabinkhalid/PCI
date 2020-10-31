@@ -2,8 +2,7 @@
 $servername = 'localhost';
 $username = "root";
 $password = "";
-
-$dbname = "pci";
+$dbname = "edusol_pci";
 
 //$servername = 'edusol.co';
 //$username = "edusol_pci";
