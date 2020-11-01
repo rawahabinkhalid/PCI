@@ -77,6 +77,49 @@ include_once('../conn.php');
                     <ul class="nav nav-treeview" id="myprofile">
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Demo History
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" id="myprofile">
+                        <li class="nav-item">
+                            <a href="demo_requested_history.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Demo Requested History
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="demo_scheduled_history.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Demo Scheduled History
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="demo_confirmed_history.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Demo Confirmed History
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="demo_rejected_history.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Demo Rejected History
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
