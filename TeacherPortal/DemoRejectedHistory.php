@@ -96,26 +96,26 @@ to get the desired effect
                                 <th scope="col"><b>Rejected Date</b></th>
                             </tr>
                         </thead>
-                        <tbody id="">
+                        <tbody id="tbody_table">
                             <?php
-                                $count = 1;
-                                $sql = 'SELECT requestdemo_teacherside.*, tutorform_section1.FullName,studenttutorform.StudentName, instituteregistrationform.InstituteName FROM requestdemo_teacherside LEFT JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_teacherside.Institute_Id LEFT JOIN tutorform_section1 ON  tutorform_section1.Id = requestdemo_teacherside.TeacherId LEFT JOIN studenttutorform ON studenttutorform.Id = requestdemo_teacherside.Student_Id  WHERE requestdemo_teacherside.Status = "Rejected" ';
+                                // $count = 1;
+                                // $sql = 'SELECT requestdemo_teacherside.*, tutorform_section1.FullName,studenttutorform.StudentName, instituteregistrationform.InstituteName FROM requestdemo_teacherside LEFT JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_teacherside.Institute_Id LEFT JOIN tutorform_section1 ON  tutorform_section1.Id = requestdemo_teacherside.TeacherId LEFT JOIN studenttutorform ON studenttutorform.Id = requestdemo_teacherside.Student_Id  WHERE requestdemo_teacherside.Status = "Rejected" ';
                                 
-                                // echo $sql;
-                                $result = mysqli_query($conn, $sql);
-                                if(mysqli_num_rows($result) > 0 ){
-                                    while($row = mysqli_fetch_assoc($result)){
-                                        echo'
-                                        <tr>
-                                            <td>'.$count++.'</td>
-                                            <td>'.$row['FullName'].'</td>
-                                            <td>'.$row['StudentName'].'</td>
-                                            <td>'.$row['InstituteName'].'</td>
-                                            <td>'.$row['DefultDateTime'].'</td>
-                                        </tr>
-                                        ';
-                                    }
-                                }
+                                // // echo $sql;
+                                // $result = mysqli_query($conn, $sql);
+                                // if(mysqli_num_rows($result) > 0 ){
+                                //     while($row = mysqli_fetch_assoc($result)){
+                                //         echo'
+                                //         <tr>
+                                //             <td>'.$count++.'</td>
+                                //             <td>'.$row['FullName'].'</td>
+                                //             <td>'.$row['StudentName'].'</td>
+                                //             <td>'.$row['InstituteName'].'</td>
+                                //             <td>'.$row['DefultDateTime'].'</td>
+                                //         </tr>
+                                //         ';
+                                //     }
+                                // }
                             ?>
                         </tbody>
                         <tfoot id="">
@@ -166,7 +166,40 @@ to get the desired effect
 
     <script>
     $(document).ready(function() {
-        $('.table').DataTable();
+        $.ajax({
+            type: "POST",
+            url: 'DemoRejectedHistoryApi.php',
+            success: function(data) {
+                console.log(data);
+
+                var obj_master = JSON.parse(data);
+                obj = obj_master.data;
+                console.log(obj);
+                count = 1;
+                content = '';
+                for (i = 0; i < obj.length; i++) {
+                    content += '<tr>';
+                    content += '<td>';
+                    content += count++;
+                    content += '</td>';
+                    content += '<td>';
+                    content += obj[i].FullName;
+                    content += '</td>';
+                    content += '<td>';
+                    content += obj[i].StudentName;
+                    content += '</td>';
+                    content += '<td>';
+                    content += obj[i].InstituteName;
+                    content += '</td>';
+                    content += '<td>';
+                    content += obj[i].DefultDateTime;
+                    content += '</td>';
+                    content += '</tr>';
+                }
+                $('#tbody_table').html(content);
+                $('.table').DataTable();
+            }
+        });
     });
     </script>
 
