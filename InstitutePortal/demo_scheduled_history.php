@@ -89,11 +89,13 @@ to get the desired effect
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Job Name</th>
+                                <th>Institute Name</th>
                                 <th>Teacher Name</th>
-                                <th>Scheduled by Teacher</th>
+                                <th>Scheduled Date</th>
                             </tr>
                         </thead>
+                        <tbody id="tbody_table">
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.container-fluid -->
@@ -144,222 +146,39 @@ to get the desired effect
 
     <script>
     $(document).ready(function() {
-        $('#institute').multiselect({
-            nonSelectedText: 'Select Institute',
-            enableFiltering: true,
-            enableCaseInsensitiveFiltering: true,
-            buttonWidth: '100%',
-            includeSelectAllOption: true
-        });
-        $('#myTable').DataTable();
-
-    });
-    </script>
-
-
-    <script>
-    $("#instituteform").submit(function(e) {
-
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-
-        var form = $(this);
-        var url = form.attr('action');
-
-        //jason serialised data start
-        var data = $('#instituteform').serializeJSON();
-        console.log("instituteform", data);
-        console.log("instituteform", JSON.stringify(data));
-        //jason serialised data end
-
         $.ajax({
             type: "POST",
-            url: url,
-
-            //jason serialised data start
-            cache: false,
-            data: JSON.stringify(data),
-            contentType: "json",
-            //jason serialised data end
-
+            url: 'DemoScheduledHistoryApi.php',
             success: function(data) {
                 console.log(data);
 
-                var obj = JSON.parse(data);
+                var obj_master = JSON.parse(data);
+                obj = obj_master.data;
                 console.log(obj);
                 count = 1;
                 content = '';
-                content +=
-                    '<table class="table" id="myTable"><thead><tr><th>S.No</th><th>Profile</th><th>Name</th><th>Preffered Subjects</th><th>Qualification</th><th>Address</th><th>Age</th><th>Experience</th><th>Status</th></tr></thead>';
-                content += '<tbody>';
                 for (i = 0; i < obj.length; i++) {
                     content += '<tr>';
-                    content += '<th>';
-                    content += count++;
-                    content += '</th>';
                     content += '<td>';
-                    content += '<img class="img-circle" style="width:60px; height: 60px;" src="' +
-                        obj[i].TutorImage + '">';
+                    content += count++;
+                    content += '</td>';
+                    content += '<td>';
+                    content += obj[i].InstituteName;
                     content += '</td>';
                     content += '<td>';
                     content += obj[i].FullName;
                     content += '</td>';
                     content += '<td>';
-                    content += obj[i].PreferredSubjects;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].Qualification;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].PresentAddress;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].Age;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].TotalExperience;
-                    content += '</td>';
-                    content += '<td>';
-                    if (obj[i].Status == 'null' || obj[i].Status == 'Rejected') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '">Request Demo</button>';
-                    } else if (obj[i].Status == 'Pending') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '" disabled>Demo Requested</button>';
-                    } else if (obj[i].Status == 'Scheduled') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '" disabled>Demo Scheduled</button>';
-                    }
+                    content += obj[i].DefultDateTime;
                     content += '</td>';
                     content += '</tr>';
                 }
-                content += '</tbody>';
-                content += '</table>';
-                $('#tutordata').html(content);
-                $('#myTable').DataTable();
-
-                // window.location.href = "index.php";
+                $('#tbody_table').html(content);
+                $('.table').DataTable();
             }
         });
+
     });
-
-    //request demo button 
-    $(document).on('click', '.requestDemo', function() {
-        var institutes = [];
-        $("#institute > option:selected").each(function() {
-            institutes.push(this.value);
-        });
-
-        var obj = {};
-        obj.TeacherId = $(this).val();
-        obj.Institutes = institutes;
-        console.log(obj);
-        $.ajax({
-            type: "POST",
-            url: "RequestDemo.php",
-            cache: false,
-            data: JSON.stringify(obj),
-            contentType: "json",
-            success: function(data) {
-                console.log("requestdemodata", data);
-                refreshTableBySubmittingForm(); //ye humne perdefine function name likha hai
-            }
-        });
-    });
-
-
-    //ye code isliye repeat ua ha coz hum refresh krwarhe ha jb requestdemo ke button pr click kr rhy ha to
-    function refreshTableBySubmittingForm() {
-        var form = $('#instituteform');
-        var url = form.attr('action');
-
-        //jason serialised data start
-        var data = $('#instituteform').serializeJSON();
-        console.log("instituteform", data);
-        console.log("instituteform", JSON.stringify(data));
-        //jason serialised data end
-
-        $.ajax({
-            type: "POST",
-            url: url,
-
-            //jason serialised data start
-            cache: false,
-            data: JSON.stringify(data),
-            contentType: "json",
-            //jason serialised data end
-
-            success: function(data) {
-                console.log(data);
-
-                var obj = JSON.parse(data);
-                console.log(obj);
-                count = 1;
-                content = '';
-                content +=
-                    '<table class="table" id="myTable"><thead><tr><th>S.No</th><th>Profile</th><th>Name</th><th>Preffered Subjects</th><th>Qualification</th><th>Address</th><th>Age</th><th>Experience</th><th>Status</th></tr></thead>';
-                content += '<tbody>';
-                for (i = 0; i < obj.length; i++) {
-                    content += '<tr>';
-                    content += '<th>';
-                    content += count++;
-                    content += '</th>';
-                    content += '<td>';
-                    content += '<img class="img-circle" style="width:60px; height: 60px;" src="' +
-                        obj[i].TutorImage + '">';
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].FullName;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].PreferredSubjects;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].Qualification;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].PresentAddress;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].Age;
-                    content += '</td>';
-                    content += '<td>';
-                    content += obj[i].TotalExperience;
-                    content += '</td>';
-                    content += '<td>';
-                    if (obj[i].Status == 'null' || obj[i].Status == 'Rejected') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '">Request Demo</button>';
-                    } else if (obj[i].Status == 'Pending') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '" disabled>Demo Requested</button>';
-                    } else if (obj[i].Status == 'Scheduled') {
-                        content +=
-                            '<button class="btn btn-success requestDemo" type="button" value="' +
-                            obj[i]
-                            .Id + '" disabled>Demo Scheduled</button>';
-                    }
-                    content += '</td>';
-                    content += '</tr>';
-                }
-                content += '</tbody>';
-                content += '</table>';
-                $('#tutordata').html(content);
-                $('#myTable').DataTable();
-
-                // window.location.href = "index.php";
-            }
-        });
-    }
     </script>
 
 </html>
