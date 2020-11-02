@@ -827,7 +827,7 @@ to get the desired effect
                         </div>
                         <!-- /.row -->
                         <br>
-                        <button name="submit" id="submit" class="btn btn-success" nclick="FormSubmiConfirmation()"
+                        <button name="submit" id="submit" class="btn btn-success" onclick="FormSubmiConfirmation()"
                             style="width:130px">Submit</button>
                         <button type="submit" id="saveasdraft" name="saveasdraft" class="btn btn-warning ml-2"
                             onclick="SaveAsDraft()" style="width:130px">Save As Draft</button>

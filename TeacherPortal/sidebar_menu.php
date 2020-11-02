@@ -67,6 +67,49 @@ include_once('../conn.php');
                         </p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-edit"></i>
+                        <p>
+                            Demo History
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="DemoRequestedHistory.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>Demo Requested History</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="DemoScheduledHistory.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>Demo Scheduled History</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="DemoConfirmedHistory.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>Demo Confirmed History</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="DemoRejectedHistory.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>Demo Rejected History</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview" id="myprofile">
+                    <a href="SendQuery.php" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            Send Query 
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
