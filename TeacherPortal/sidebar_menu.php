@@ -102,7 +102,7 @@ include_once('../conn.php');
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview" id="myprofile">
+                <li class="nav-item has-treeview">
                     <a href="SendQuery.php" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>

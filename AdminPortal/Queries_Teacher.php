@@ -1,6 +1,4 @@
 <?php
-include_once('../conn.php');
-
 session_start();
 if(!isset($_SESSION['userrole'])){
     header('location:../Login/index.php');
@@ -15,7 +13,7 @@ if(!isset($_SESSION['userrole'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Teacher Panel | Send Query</title>
+    <title>Admin Panel | Teacher Queries</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -25,10 +23,22 @@ if(!isset($_SESSION['userrole'])){
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
     <style>
-    body {
-        background-color: #F4F6F9;
+    tr:hover {
+        background-color: #BEE5EB;
+    }   
+
+    .demo {
+        background: linear-gradient(to right, #ffcccc 0%, #6666ff 100%);
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    a:hover {
+        color: #fff;
     }
     </style>
 </head>
@@ -44,7 +54,6 @@ to get the desired effect
 -->
 
 <body class="hold-transition sidebar-mini">
-
     <div class="wrapper">
         <!-- Navbar -->
         <?php
@@ -64,16 +73,13 @@ to get the desired effect
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-12">
-                            <h1 class="m-0 text-dark text-center"><b><u>Send Query to Admin</u></b></h1>
-                        </div>
-                        <div class="col-sm-6 mt-3">
-                            <!-- <h1 class="m-0 text-dark"><u>Search Tutors</u></h1> -->
+                        <div class="col-sm-9">
+                            <h1 class="m-0 demo text-bold">Teacher-Queries</h1>
                         </div><!-- /.col -->
-                        <div class="col-sm-6 mt-3">
+                        <div class="col-sm-3">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Send Query to Admin</li>
+                                <li class="breadcrumb-item"><a href="#" style="color:#007bff">Home</a></li>
+                                <li class="breadcrumb-item active">Teacher Queries</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -84,25 +90,50 @@ to get the desired effect
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Description:</label>
-                            <textarea class="form-control" name="querydescription" id="querydescription" cols="30"
-                                rows="10">
-                            </textarea>
-                        </div>
-                    </div><br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="buttin" id="submit" class="btn btn-success">Submit</button>
-                        </div>
+                    <div class="row mt-5">
+                        <?php
+                            $count = 1;
+                                    
+                            $sql = "SELECT * FROM queryteacher ORDER BY Id DESC";
+                            $result = mysqli_query($conn,$sql);
+
+                            echo'
+                            <table class="table table-bordered text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col" style="width: 150px;">User ID</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>';
+                                    
+                            while($row = mysqli_fetch_assoc($result)){
+                            echo '
+                            <div class="col-lg-12">
+            
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">'.$count++.'</th>
+                                        <td>
+                                            <p>'.$row['UserId'].'</p>
+                                        </td>
+                                        <td>
+                                            <p>'.$row['Description'].'</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </div>';
+                            }
+                            echo '</table>';
+                        ?>
                     </div>
+                    <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
+                <br><br><br>
             </div>
             <!-- /.content -->
         </div>
-        <br><br><br>
         <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
@@ -113,7 +144,8 @@ to get the desired effect
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="https://matz.group/" target="_blank">Matz Solutions Pvt
+            <strong>Copyright &copy; 2020 <a href="https://matz.group/" target="_blank" style="color:#007bff">Matz
+                    Solutions Pvt
                     Ltd</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
@@ -136,23 +168,7 @@ to get the desired effect
     <script src="../plugins/chart.js/Chart.min.js"></script>
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/js/pages/dashboard3.js"></script>
+</body>
 
-    <script>
-    $('#submit').on('click', function() {
-        var id = $(this).val();
-        // alert(id);
-        var Qdescription = $('#querydescription').val();
-
-        $.ajax({
-            type: 'POST',
-            url: 'SendQuerySubmit.php',
-            data: 'querydescription=' + Qdescription,
-            success: function(response) {
-                alert('Query Has been submitted successfully');
-                location.reload();
-            },
-        });
-    })
-    </script>
 
 </html>

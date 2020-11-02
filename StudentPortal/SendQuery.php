@@ -15,7 +15,7 @@ if(!isset($_SESSION['userrole'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Teacher Panel | Send Query</title>
+    <title>Student Panel | Send Query</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -81,27 +81,25 @@ to get the desired effect
             </div>
             <!-- /.content-header -->
 
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Description:</label>
-                            <textarea class="form-control" name="querydescription" id="querydescription" cols="30"
-                                rows="10">
-                            </textarea>
-                        </div>
-                    </div><br>
-                    <div class="row">
-                        <div class="col-md-6">
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Description:</label>
+                        <textarea class="form-control" name="querydescription" id="querydescription" cols="30" rows="10">
+                        </textarea>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-6">
                             <button type="buttin" id="submit" class="btn btn-success">Submit</button>
-                        </div>
                     </div>
                 </div>
-                <!-- /.container-fluid -->
             </div>
-            <!-- /.content -->
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content -->
         <br><br><br>
         <!-- /.content-wrapper -->
 
@@ -142,7 +140,7 @@ to get the desired effect
         var id = $(this).val();
         // alert(id);
         var Qdescription = $('#querydescription').val();
-
+        
         $.ajax({
             type: 'POST',
             url: 'SendQuerySubmit.php',

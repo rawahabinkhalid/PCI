@@ -85,7 +85,7 @@ include_once('../conn.php');
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" id="myprofile">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="demo_requested_history.php" class="nav-link">
                                 <i class="nav-icon fas fa-circle"></i>
@@ -119,6 +119,14 @@ include_once('../conn.php');
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="SendQuery.php" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            Send Query 
+                        </p>
+                    </a>
                 </li>
             </ul>
         </nav>

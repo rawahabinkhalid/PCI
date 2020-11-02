@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='POST') {
         $userid = $_SESSION['userid'];
     }
 
-    $sql = 'INSERT INTO QueryTeacher (`UserId`, `Description`) VALUES ("'.$userid.'", "'.$_POST['querydescription'].'") ';
+    $sql = 'INSERT INTO QueryInstitute (`UserId`, `Description`) VALUES ("'.$userid.'", "'.$_POST['querydescription'].'") ';
     $result = mysqli_query($conn, $sql);
 
         if($result){

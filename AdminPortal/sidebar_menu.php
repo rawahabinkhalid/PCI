@@ -95,6 +95,41 @@ include_once('../conn.php');
                         </p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="" class="nav-link" >
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            Queries
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="Queries_Student.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Student Queries
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Queries_Teacher.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Teacher Queries
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Queries_Institute.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Institute Queries
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
