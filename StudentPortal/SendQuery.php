@@ -81,34 +81,36 @@ to get the desired effect
             </div>
             <!-- /.content-header -->
 
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Description:</label>
-                        <textarea class="form-control" name="querydescription" id="querydescription" cols="30" rows="10">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Description:</label>
+                            <textarea class="form-control" name="querydescription" id="querydescription" cols="30"
+                                rows="10">
                         </textarea>
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-md-6">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-6">
                             <button type="buttin" id="submit" class="btn btn-success">Submit</button>
+                        </div>
                     </div>
                 </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.content -->
+            <br><br><br>
+            <!-- /.content-wrapper -->
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+
         </div>
-        <!-- /.content -->
-        <br><br><br>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-
         <!-- Main Footer -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2020 <a href="https://matz.group/" target="_blank">Matz Solutions Pvt
@@ -140,12 +142,13 @@ to get the desired effect
         var id = $(this).val();
         // alert(id);
         var Qdescription = $('#querydescription').val();
-        
+
         $.ajax({
             type: 'POST',
             url: 'SendQuerySubmit.php',
             data: 'querydescription=' + Qdescription,
             success: function(response) {
+                // console.log(response);
                 alert('Query Has been submitted successfully');
                 location.reload();
             },

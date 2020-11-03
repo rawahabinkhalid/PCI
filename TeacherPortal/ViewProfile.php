@@ -34,6 +34,7 @@ if(!isset($_SESSION['userrole'])){
     }
     </style>
 
+    <!-- open Document  -->
     <script>
     function openDoc(reference) {
         var string = reference.href;

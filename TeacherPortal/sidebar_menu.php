@@ -44,9 +44,18 @@ include_once('../conn.php');
                 </li>
                 <li class="nav-item">
                     <a href="tutorform.php" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fab fa-wpforms"></i>
                         <p>
                             Teacher Form
+                            <!-- <span class="right badge badge-danger">New</span> -->
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="Edittutorform.php" class="nav-link">
+                        <i class="nav-icon fas fa-pen-square"></i>
+                        <p>
+                            Update Teacher Form
                             <!-- <span class="right badge badge-danger">New</span> -->
                         </p>
                     </a>
