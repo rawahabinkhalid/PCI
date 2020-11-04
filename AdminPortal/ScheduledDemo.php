@@ -102,8 +102,9 @@ to get the desired effect
                                         <th scope="col">S.No</th>
                                         <th scope="col">Scheduled Date</th>
                                         <th scope="col">Student Name</th>
-                                        <th scope="col">Teacher Name</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Teacher Name</th>';
+                                        // <th scope="col">Status</th>
+                                        echo'
                                     </tr>
                                 </thead>';
 
@@ -134,19 +135,20 @@ to get the desired effect
                                                     <p> &nbsp; '.$row['FullName'].'</p>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-success confirmedDialogStudent" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal1" 
-                                                        style="width:100px;">Confirm</button>
-                                                    <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal2" 
-                                                        style="width:100px;">Reject</button>
-                                                    <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal3"
-                                                        style="width:100px;">Suspicious</button>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        </td>';
+                                        // <td>
+                                        //     <div class="row">
+                                        //         <div class="col-lg-12">
+                                        //             <button class="btn btn-success confirmedDialogStudent" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal1" 
+                                        //                 style="width:100px;">Confirm</button>
+                                        //             <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal2" 
+                                        //                 style="width:100px;">Reject</button>
+                                        //             <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Student" value="'.$row['Demo_student_Id'].'" data-target="#myModal3"
+                                        //                 style="width:100px;">Suspicious</button>
+                                        //         </div>
+                                        //     </div>
+                                        // </td>
+                                        echo'
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -175,8 +177,9 @@ to get the desired effect
                                         <th scope="col">S.No</th>
                                         <th scope="col">Scheduled Date</th>
                                         <th scope="col">Institute Name</th>
-                                        <th scope="col">Teacher Name</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Teacher Name</th>';
+                                        // <th scope="col">Status</th>
+                                        echo'
                                     </tr>
                                 </thead>';
 
@@ -208,18 +211,18 @@ to get the desired effect
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal1" 
-                                                        style="width:100px;">Confirm</button>
-                                                    <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal2" 
-                                                        style="width:100px;">Reject</button>
-                                                    <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal3"
-                                                        style="width:100px;">Suspicious</button>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        // <td>
+                                        //     <div class="row">
+                                        //         <div class="col-lg-12">
+                                        //             <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal1" 
+                                        //                 style="width:100px;">Confirm</button>
+                                        //             <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal2" 
+                                        //                 style="width:100px;">Reject</button>
+                                        //             <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Institute" value="'.$row['Demo_Institute_Id'].'" data-target="#myModal3"
+                                        //                 style="width:100px;">Suspicious</button>
+                                        //         </div>
+                                        //     </div>
+                                        // </td>
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -249,7 +252,7 @@ to get the desired effect
                                         <th scope="col">Scheduled Date</th>
                                         <th scope="col">Teacher Name</th>
                                         <th scope="col">Student Name</th>
-                                        <th scope="col">Status</th>
+                                        // <th scope="col">Status</th>
                                     </tr>
                                 </thead>';
 
@@ -281,18 +284,18 @@ to get the desired effect
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal1" 
-                                                        style="width:100px;">Confirm</button>
-                                                    <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal2" 
-                                                        style="width:100px;">Reject</button>
-                                                    <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal3"
-                                                        style="width:100px;">Suspicious</button>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        // <td>
+                                        //     <div class="row">
+                                        //         <div class="col-lg-12">
+                                        //             <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal1" 
+                                        //                 style="width:100px;">Confirm</button>
+                                        //             <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal2" 
+                                        //                 style="width:100px;">Reject</button>
+                                        //             <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal3"
+                                        //                 style="width:100px;">Suspicious</button>
+                                        //         </div>
+                                        //     </div>
+                                        // </td>
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -321,8 +324,9 @@ to get the desired effect
                                         <th scope="col">S.No</th>
                                         <th scope="col">Scheduled Date</th>
                                         <th scope="col">Teacher Name</th>
-                                        <th scope="col">Institute Name</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Institute Name</th>';
+                                        // <th scope="col">Status</th>
+                                        echo'
                                     </tr>
                                 </thead>';
 
@@ -353,19 +357,20 @@ to get the desired effect
                                                     <p> &nbsp; '.$row['InstituteName'].'</p>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal1" 
-                                                        style="width:100px;">Confirm</button>
-                                                    <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal2" 
-                                                        style="width:100px;">Reject</button>
-                                                    <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal3"
-                                                        style="width:100px;">Suspicious</button>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        </td>';
+                                        // <td>
+                                        //     <div class="row">
+                                        //         <div class="col-lg-12">
+                                        //             <button class="btn btn-success confirmedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal1" 
+                                        //                 style="width:100px;">Confirm</button>
+                                        //             <button class="btn btn-danger rejectedDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal2" 
+                                        //                 style="width:100px;">Reject</button>
+                                        //             <button class="btn btn-warning suspiciousDialog" data-toggle="modal" data-id="Teacher" value="'.$row['Demo_Teacher_Id'].'" data-target="#myModal3"
+                                        //                 style="width:100px;">Suspicious</button>
+                                        //         </div>
+                                        //     </div>
+                                        // </td>
+                                        echo'
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -416,7 +421,7 @@ to get the desired effect
 </body>
 
 <!-- Confirm button Modal Box start -->
-<div id="myModal1" class="modal fade" role="dialog">
+<!-- <div id="myModal1" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -480,11 +485,11 @@ to get the desired effect
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Confirm button Modal Box end -->
 
 <!-- Reject button Modal Box start -->
-<div id="myModal2" class="modal fade" role="dialog">
+<!-- <div id="myModal2" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -527,11 +532,11 @@ to get the desired effect
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Reject button Modal Box end -->
 
 <!-- Suspicious button Modal Box start -->
-<div id="myModal3" class="modal fade" role="dialog">
+<!-- <div id="myModal3" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -564,11 +569,11 @@ to get the desired effect
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Suspicious button Modal Box end -->
 
 <!--After Scheduled DEMO -->
-<script>
+<!-- <script>
 $('.confirmedDialog').on('click', function() {
     console.log($(this).val());
     $('#demoIdCon').val($(this).val());
@@ -597,6 +602,6 @@ $('.suspiciousDialog').on('click', function() {
     $('#demoTypeSus').val($(this).attr('data-id'));
     $('#demoIdSus').val($(this).val());
 });
-</script>
+</script> -->
 
 </html>

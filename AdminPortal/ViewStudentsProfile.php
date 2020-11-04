@@ -245,6 +245,53 @@ to get the desired effect
                             </div>
                         </div>
                         <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-3 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Demo Requested:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(Status) FROM requestdemo_studentside WHERE `Status` = "Pending" AND `Student_Id` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['COUNT(Status)']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Demo Scheduled:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(Status) AS Count_Status FROM requestdemo_studentside WHERE `Status` = "Scheduled" AND `Student_Id` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['Count_Status']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Confirm Tutions:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(demostatus.Status) FROM requestdemo_studentside LEFT JOIN demostatus ON requestdemo_studentside.Id = demostatus.DemoId WHERE demostatus.`Status` = "Confirmed" AND `Student_Id` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['COUNT(demostatus.Status)']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Rejected Tutions:</u></p>
+                                <?php 
+                             $sql = 'SELECT COUNT(*) AS Count_Status FROM requestdemo_studentside LEFT JOIN demostatus ON requestdemo_studentside.Id = demostatus.DemoId WHERE (demostatus.`Status` = "Rejected" OR (demostatus.`Status` IS NULL AND requestdemo_studentside.`Status` = "Rejected")) AND `Student_Id` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['Count_Status']. '</p>';
+                            }
+                            ?>
+                            </div>
+                        </div>
                         <br>
                     </form>
                 </div>

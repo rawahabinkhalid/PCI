@@ -48,17 +48,36 @@ include_once('../conn.php');
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Scheduled Demo
-                            <span class="right badge badge-danger">New</span>
+                            <!-- <span class="right badge badge-danger">New</span> -->
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="ConfirmStudentStatus.php" class="nav-link">
+                <li class="nav-item has-treeview">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fas fa-check-double"></i>
                         <p>
-                            Student Tution Status
+                            Tution Status
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="ConfirmStudentsDemo.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Students
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ConfirmInstitutesDemo.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Institutes
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="ViewStudents.php" class="nav-link">

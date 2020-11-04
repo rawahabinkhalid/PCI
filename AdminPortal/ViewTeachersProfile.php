@@ -536,6 +536,64 @@ to get the desired effect
                             </div>
                         </div>
                         <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-2 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Demo Requested:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(Status) FROM requestdemo_teacherside WHERE `Status` = "Pending" AND `TeacherId` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['COUNT(Status)']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Demo Scheduled:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(Status) AS Count_Status FROM requestdemo_teacherside WHERE `Status` = "Scheduled" AND `TeacherId` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['Count_Status']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Confirm Tutions:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(demostatus.Status) FROM requestdemo_teacherside LEFT JOIN demostatus ON requestdemo_teacherside.Id = demostatus.DemoId WHERE demostatus.`Status` = "Confirmed" AND `TeacherId` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['COUNT(demostatus.Status)']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Rejected Tutions:</u></p>
+                                <?php 
+                            $sql = 'SELECT COUNT(*) AS Count_Status FROM requestdemo_teacherside LEFT JOIN demostatus ON requestdemo_teacherside.Id = demostatus.DemoId WHERE (demostatus.`Status` = "Rejected" OR (demostatus.`Status` IS NULL AND requestdemo_teacherside.`Status` = "Rejected")) AND `TeacherId` = "'.$_GET['id'].'" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['Count_Status']. '</p>';
+                            }
+                            ?>
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <hr style="border: 2px solid #000;">
+                                <p style="font-weight: bold"><u>Total Salary:</u></p>
+                                <?php 
+                            $sql = 'SELECT SUM(Fees) FROM demostatus WHERE `Status` = "Confirmed" AND `Type` = "Teacher" ';
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<p>' .$row['SUM(Fees)']. '</p>';
+                            }
+                            ?>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <br><br><br>
