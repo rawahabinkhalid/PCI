@@ -210,7 +210,7 @@ to get the desired effect
                                                     <p> &nbsp; '.$row['FullName'].'</p>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td>';
                                         // <td>
                                         //     <div class="row">
                                         //         <div class="col-lg-12">
@@ -223,6 +223,7 @@ to get the desired effect
                                         //         </div>
                                         //     </div>
                                         // </td>
+                                        echo'
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -251,8 +252,9 @@ to get the desired effect
                                         <th scope="col">S.No</th>
                                         <th scope="col">Scheduled Date</th>
                                         <th scope="col">Teacher Name</th>
-                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Student Name</th>';
                                         // <th scope="col">Status</th>
+                                        echo'
                                     </tr>
                                 </thead>';
 
@@ -283,7 +285,7 @@ to get the desired effect
                                                     <p> &nbsp; '.$row['StudentName'].'</p>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td>';
                                         // <td>
                                         //     <div class="row">
                                         //         <div class="col-lg-12">
@@ -296,6 +298,7 @@ to get the desired effect
                                         //         </div>
                                         //     </div>
                                         // </td>
+                                        echo'
                                     </tr>';
                                 }
                                 echo'</tbody>
