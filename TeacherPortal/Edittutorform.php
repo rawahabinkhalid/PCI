@@ -25,7 +25,143 @@ if(!isset($_SESSION['userrole'])){
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script>
+    function addsec2_qualification() {
+        // $("#section2_qualification").clone().insertAfter("#section2_qualification");
+        content = '';
+        content += '    <div class="row" id="section2_qualification" name="section2_qualification"  \
+                            style="padding: 0px 5px;">                                              \
+                            <div class="col-sm-2">                                                  \
+                                <div class="form-group">                                            \
+                                    <input class="form-control"                                     \
+                                        name="qualification[]" type="text" required                 \
+                                        style="outline: none; margin-top: -12px;">                  \
+                                </div>                                                              \
+                            </div>                                                                  \
+                            <div class="col-sm-2">                                                  \
+                                <div class="form-group">                                            \
+                                    <input class="form-control"                                     \
+                                        name="subspec[]" type="text" required                       \
+                                        style="outline: none; margin-top: -12px;">                  \
+                                </div>                                                              \
+                            </div>                                                                  \
+                            <div class="col-sm-4">                                                  \
+                                <div class="form-group">                                            \
+                                    <input class="form-control"                                     \
+                                        name="insuni[]" type="text" required                        \
+                                        style="outline: none; margin-top: -12px;">                  \
+                                </div>                                                              \
+                            </div>                                                                  \
+                            <div class="col-sm-2">                                                  \
+                                <div class="form-group">                                            \
+                                    <input class="form-control"                                     \
+                                        name="passingyear[]" type="text" required                   \
+                                        style="outline: none; margin-top: -12px;">                  \
+                                </div>                                                              \
+                            </div>                                                                  \
+                            <div class="col-sm-2">                                                  \
+                                <div class="form-group">                                            \
+                                    <input class="form-control"                                     \
+                                        name="gradedivision[]" type="text" required                 \
+                                        style="outline: none; margin-top: -12px;">                  \
+                                </div>                                                              \
+                            </div>                                                                  \
+                        </div>';
+        $('#qualification_data').append(content);
+    }
 
+    function addsec3_jobexperience() {
+        content = '';
+        content += '    <div class="row" id="section3_jobexperience" name="section3_jobexperience"      \
+                            style="padding: 0px 5px;">                                                  \
+                            <div class="col-sm-4">                                                      \
+                                <div class="form-group">                                                \
+                                    <input class="form-control" name="jobtitle[]" type="text" required  \
+                                        style="outline: none; margin-top: -12px;">                      \
+                                </div>                                                                  \
+                            </div>                                                                      \
+                            <div class="col-sm-4">                                                      \
+                                <div class="form-group">                                                \
+                                    <input class="form-control" name="orgname[]" type="text" required   \
+                                        style="outline: none; margin-top: -12px;">                      \
+                                </div>                                                                  \
+                            </div>                                                                      \
+                            <div class="col-sm-2">                                                      \
+                                <div class="form-group">                                                \
+                                    <input class="form-control" name="fromto[]" type="text" required    \
+                                        style="outline: none; margin-top: -12px;">                      \
+                                </div>                                                                  \
+                            </div>                                                                      \
+                            <div class="col-sm-2">                                                      \
+                                <div class="form-group">                                                \
+                                    <input class="form-control" name="till[]" type="text" required      \
+                                        style="outline: none; margin-top: -12px;">                      \
+                                </div>                                                                  \
+                            </div>                                                                      \
+                        </div>';
+        $('#experience_data').append(content);
+    }
+
+    function addsec4_areaofinterest() {
+        // $("#section4_areaofinterest").clone().insertAfter("#section4_areaofinterest");
+        content = '';
+        content += '    <div class="row" id="section4_areaofinterest" name="section4_areaofinterest"    \
+                        style="padding: 0px 5px;">                                                      \
+                        <div class="col-sm-6">                                                          \
+                            <div class="form-group">                                                    \
+                                <select class="form-control" name="classtoteach[]" required             \
+                                    style="outline: none; margin-top: -12px;">                          \
+                                    <option Selected Disabled>Please Select Class</option>              \
+                                    <option                                                             \
+                                        value="Class 1">                                                \
+                                        Class 1</option>                                                \
+                                    <option                                                             \
+                                        value="Class 2">Class 2</option>                                \
+                                    <option                                                             \
+                                        value="Class 3">Class 3</option>                                \
+                                    <option                                                             \
+                                        value="Class 4">Class 4</option>                                \
+                                    <option                                                             \
+                                        value="Class 5">Class 5</option>                                \
+                                    <option                                                             \
+                                        value="Class 6">Class 6</option>                                \
+                                    <option                                                             \
+                                        value="Class 7">Class 7</option>                                \
+                                    <option                                                             \
+                                        value="Class 8">Class 8</option>                                \
+                                    <option                                                             \
+                                        value="Matric 9">Matric 9</option>                              \
+                                    <option                                                             \
+                                        value="Matric 10">Matric 10</option>                            \
+                                    <option                                                             \
+                                        value="Olevel Year 1">Olevel Year 1</option>                    \
+                                    <option                                                             \
+                                        value="Olevel Year 2">Olevel Year 2</option>                    \
+                                    <option                                                             \
+                                        value="Olevel Year 3">Olevel Year 3</option>                    \
+                                    <option                                                             \
+                                        value="Inter Year 1">Inter Year 1</option>                      \
+                                    <option                                                             \
+                                        value="Inter Year 2">Inter Year 2</option>                      \
+                                    <option                                                             \
+                                        value="Alevel Year 1">Alevel Year 1</option>                    \
+                                    <option                                                             \
+                                        value="Alevel Year 2">Alevel Year 2</option>                    \
+                                    <option                                                             \
+                                        value="Alevel Year 3">Alevel Year 3</option>                    \
+                                </select>                                                               \
+                            </div>                                                                      \
+                        </div>                                                                          \
+                        <div class="col-sm-6">                                                          \
+                            <div class="form-group" style="margin-top:-12px">                           \
+                                <input class="form-control" name="prefsubject[]" type="text"            \
+                                    required style="outline: none; margin-top: -12px;">                 \
+                            </div>                                                                      \
+                        </div>';
+        $('#aoi_data').append(content);
+    }
+    </script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -373,39 +509,62 @@ to get the desired effect
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="qualification_data">
+                                        <?php
+                                    $sqlQualification = 'SELECT * FROM tutorform_section2 WHERE UserId = ' . $row['Id'];
+                                    $resultQualification = $conn->query($sqlQualification);
+                                    $counter = 0;
+                                    if($resultQualification->num_rows > 0) {
+                                        while($rowQualification = $resultQualification->fetch_assoc()) {
+                                    ?>
 
-                                    <div class="row" id="section2_qualification" name="section2_qualification"
-                                        style="padding: 0px 5px;">
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="qualification[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
+                                        <div class="row" id="section2_qualification" name="section2_qualification"
+                                            style="padding: 0px 5px;">
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control"
+                                                        value="<?php echo $rowQualification['Qualification']; ?>"
+                                                        name="qualification[]" type="text" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control"
+                                                        value="<?php echo $rowQualification['SubjectSpecialization']; ?>"
+                                                        name="subspec[]" type="text" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input class="form-control"
+                                                        value="<?php echo $rowQualification['InstituteUniversity']; ?>"
+                                                        name="insuni[]" type="text" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control"
+                                                        value="<?php echo $rowQualification['YearOfPassing']; ?>"
+                                                        name="passingyear[]" type="text" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control"
+                                                        value="<?php echo $rowQualification['GradeDivision']; ?>"
+                                                        name="gradedivision[]" type="text" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="subspec[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <input class="form-control" name="insuni[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="passingyear[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="gradedivision[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
                                     </div>
 
                                     <!-- add row & delete row-->
@@ -455,33 +614,49 @@ to get the desired effect
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row" id="section3_jobexperience" name="section3_jobexperience"
-                                        style="padding: 0px 5px;">
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <input class="form-control" name="jobtitle[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
+                                    <div id="experience_data">
+                                        <?php
+                                    $sqlExperience = 'SELECT * FROM tutorform_section3 WHERE UserId = ' . $row['Id'];
+                                    $resultExperience = $conn->query($sqlExperience);
+                                    $counter = 0;
+                                    if($resultExperience->num_rows > 0) {
+                                        while($rowExperience = $resultExperience->fetch_assoc()) {
+                                    ?>
+                                        <div class="row" id="section3_jobexperience" name="section3_jobexperience"
+                                            style="padding: 0px 5px;">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="jobtitle[]" type="text" required
+                                                        value="<?php echo $rowExperience['JobEntitlement']; ?>"
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="orgname[]" type="text" required
+                                                        value="<?php echo $rowExperience['OrganizationName']; ?>"
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="fromto[]" type="text" required
+                                                        value="<?php echo $rowExperience['FromTo']; ?>"
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="till[]" type="text" required
+                                                        value="<?php echo $rowExperience['Till']; ?>"
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <input class="form-control" name="orgname[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="fromto[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <input class="form-control" name="till[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
                                     </div>
 
                                     <!-- add row & delete row-->
@@ -523,40 +698,92 @@ to get the desired effect
                                         </div>
                                     </div>
 
-                                    <div class="row" id="section4_areaofinterest" name="section4_areaofinterest"
-                                        style="padding: 0px 5px;">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select class="form-control" name="classtoteach[]" required
-                                                    style="outline: none; margin-top: -12px;">
-                                                    <option Selected Disabled>Please Select Class</option>
-                                                    <option value="Class 1">Class 1</option>
-                                                    <option value="Class 2">Class 2</option>
-                                                    <option value="Class 3">Class 3</option>
-                                                    <option value="Class 4">Class 4</option>
-                                                    <option value="Class 5">Class 5</option>
-                                                    <option value="Class 6">Class 6</option>
-                                                    <option value="Class 7">Class 7</option>
-                                                    <option value="Class 8">Class 8</option>
-                                                    <option value="Matric 9">Matric 9</option>
-                                                    <option value="Matric 10">Matric 10</option>
-                                                    <option value="Olevel Year 1">Olevel Year 1</option>
-                                                    <option value="Olevel Year 2">Olevel Year 2</option>
-                                                    <option value="Olevel Year 3">Olevel Year 3</option>
-                                                    <option value="Inter Year 1">Inter Year 1</option>
-                                                    <option value="Inter Year 2">Inter Year 2</option>
-                                                    <option value="Alevel Year 1">Alevel Year 1</option>
-                                                    <option value="Alevel Year 2">Alevel Year 2</option>
-                                                    <option value="Alevel Year 3">Alevel Year 3</option>
-                                                </select>
+                                    <div id="aoi_data">
+                                        <?php
+                                    $sqlAOI = 'SELECT * FROM tutorform_section4 WHERE UserId = ' . $row['Id'];
+                                    $resultAOI = $conn->query($sqlAOI);
+                                    $counter = 0;
+                                    if($resultAOI->num_rows > 0) {
+                                        while($rowAOI = $resultAOI->fetch_assoc()) {
+                                    ?>
+
+                                        <div class="row" id="section4_areaofinterest" name="section4_areaofinterest"
+                                            style="padding: 0px 5px;">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="classtoteach[]" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                        <option Selected Disabled>Please Select Class</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 1') echo 'selected'; ?>
+                                                            value="Class 1">
+                                                            Class 1</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 2') echo 'selected'; ?>
+                                                            value="Class 2">Class 2</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 3') echo 'selected'; ?>
+                                                            value="Class 3">Class 3</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 4') echo 'selected'; ?>
+                                                            value="Class 4">Class 4</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 5') echo 'selected'; ?>
+                                                            value="Class 5">Class 5</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 6') echo 'selected'; ?>
+                                                            value="Class 6">Class 6</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 7') echo 'selected'; ?>
+                                                            value="Class 7">Class 7</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Class 8') echo 'selected'; ?>
+                                                            value="Class 8">Class 8</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Matric 9') echo 'selected'; ?>
+                                                            value="Matric 9">Matric 9</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Matric 10') echo 'selected'; ?>
+                                                            value="Matric 10">Matric 10</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Olevel Year 1') echo 'selected'; ?>
+                                                            value="Olevel Year 1">Olevel Year 1</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Olevel Year 2') echo 'selected'; ?>
+                                                            value="Olevel Year 2">Olevel Year 2</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Olevel Year 3') echo 'selected'; ?>
+                                                            value="Olevel Year 3">Olevel Year 3</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Inter Year 1') echo 'selected'; ?>
+                                                            value="Inter Year 1">Inter Year 1</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Inter Year 2') echo 'selected'; ?>
+                                                            value="Inter Year 2">Inter Year 2</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Alevel Year 1') echo 'selected'; ?>
+                                                            value="Alevel Year 1">Alevel Year 1</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Alevel Year 2') echo 'selected'; ?>
+                                                            value="Alevel Year 2">Alevel Year 2</option>
+                                                        <option
+                                                            <?php if($rowAOI['ClassToTeach'] == 'Alevel Year 3') echo 'selected'; ?>
+                                                            value="Alevel Year 3">Alevel Year 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group" style="margin-top:-12px">
+                                                    <input class="form-control" name="prefsubject[]" type="text"
+                                                        value="<?php echo $rowAOI['PreferredSubjects']; ?>" required
+                                                        style="outline: none; margin-top: -12px;">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group" style="margin-top:-12px">
-                                                <input class="form-control" name="prefsubject[]" type="text" required
-                                                    style="outline: none; margin-top: -12px;">
-                                            </div>
-                                        </div>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
                                     </div>
 
                                     <!-- add row & delete row-->
@@ -574,31 +801,80 @@ to get the desired effect
                                         </div>
                                     </div>
                                     <br>
+                                    <?php
+                                    $array_locations = [];
+                                    $sqlLocations = 'SELECT * FROM tutorform_section4_locations WHERE UserId = ' . $row['Id'];
+                                    $resultLocations = $conn->query($sqlLocations);
+                                    $counter = 0;
+                                    if($resultLocations->num_rows > 0) {
+                                        while($rowLocations = $resultLocations->fetch_assoc()) {
+                                            $array_locations[] = $rowLocations['PreferredArea'];
+                                        }
+                                    }
+                                    ?>
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <p style="font-weight: bold;">Preferred Area</p>
                                             <select class="form-control" name="prefarea[]" id="prefarea" required
                                                 style="outline: none;" multiple>
-                                                <option value="Baldia Town">Baldia Town</option>
-                                                <option value="Bin Qasim Town">Bin Qasim Town</option>
-                                                <option value="Gadap Town">Gadap Town</option>
-                                                <option value="Gulberg Town">Gulberg Town</option>
-                                                <option value="Gulshan Town">Gulshan Town</option>
-                                                <option value="Jamshed Town">Jamshed Town</option>
-                                                <option value="Kiamari Town">Kiamari Town</option>
-                                                <option value="Korangi Town">Korangi Town</option>
-                                                <option value="Landhi Town">Landhi Town</option>
-                                                <option value="Liaquatabad Town">Liaquatabad Town</option>
-                                                <option value="Lyari Town">Lyari Town</option>
-                                                <option value="Malir Town">Malir Town</option>
-                                                <option value="New Karachi Town">New Karachi Town</option>
-                                                <option value="North Nazimabad Town">North Nazimabad Town</option>
-                                                <option value="Orangi Town">Orangi Town</option>
-                                                <option value="Saddar Town">Saddar Town</option>
-                                                <option value="Nazimabad Town">Nazimabad Town</option>
-                                                <option value="Shah Faisal Town">Shah Faisal Town</option>
-                                                <option value="SITE Town">SITE Town</option>
+                                                <option
+                                                    <?php if(in_array('Baldia Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Baldia Town">Baldia Town</option>
+                                                <option
+                                                    <?php if(in_array('Bin Qasim Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Bin Qasim Town">Bin Qasim Town</option>
+                                                <option
+                                                    <?php if(in_array('Gadap Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Gadap Town">Gadap Town</option>
+                                                <option
+                                                    <?php if(in_array('Gulberg Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Gulberg Town">Gulberg Town</option>
+                                                <option
+                                                    <?php if(in_array('Gulshan Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Gulshan Town">Gulshan Town</option>
+                                                <option
+                                                    <?php if(in_array('Jamshed Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Jamshed Town">Jamshed Town</option>
+                                                <option
+                                                    <?php if(in_array('Kiamari Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Kiamari Town">Kiamari Town</option>
+                                                <option
+                                                    <?php if(in_array('Korangi Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Korangi Town">Korangi Town</option>
+                                                <option
+                                                    <?php if(in_array('Landhi Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Landhi Town">Landhi Town</option>
+                                                <option
+                                                    <?php if(in_array('Liaquatabad Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Liaquatabad Town">Liaquatabad Town</option>
+                                                <option
+                                                    <?php if(in_array('Lyari Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Lyari Town">Lyari Town</option>
+                                                <option
+                                                    <?php if(in_array('Malir Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Malir Town">Malir Town</option>
+                                                <option
+                                                    <?php if(in_array('New Karachi Town', $array_locations)) echo 'selected'; ?>
+                                                    value="New Karachi Town">New Karachi Town</option>
+                                                <option
+                                                    <?php if(in_array('North Nazimabad Town', $array_locations)) echo 'selected'; ?>
+                                                    value="North Nazimabad Town">North Nazimabad Town</option>
+                                                <option
+                                                    <?php if(in_array('Orangi Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Orangi Town">Orangi Town</option>
+                                                <option
+                                                    <?php if(in_array('Saddar Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Saddar Town">Saddar Town</option>
+                                                <option
+                                                    <?php if(in_array('Nazimabad Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Nazimabad Town">Nazimabad Town</option>
+                                                <option
+                                                    <?php if(in_array('Shah Faisal Town', $array_locations)) echo 'selected'; ?>
+                                                    value="Shah Faisal Town">Shah Faisal Town</option>
+                                                <option
+                                                    <?php if(in_array('SITE Town', $array_locations)) echo 'selected'; ?>
+                                                    value="SITE Town">SITE Town</option>
                                             </select>
                                         </div>
                                     </div>
@@ -650,7 +926,7 @@ to get the desired effect
                                                 <p style="font-weight: bold">Telephone No:</p>
                                                 <input class="form-control" name="ref1TelephoneNo" type="text" required
                                                     pattern="\d*" maxlength="12"
-                                                    value="<?php echo $row1['TelephoneNo'] ?>"                                                    
+                                                    value="<?php echo $row1['TelephoneNo'] ?>"
                                                     style="outline: none; margin-top: -12px;">
                                             </div>
                                         </div>
@@ -658,7 +934,7 @@ to get the desired effect
                                             <div class="form-group">
                                                 <p style="font-weight: bold">Address:</p>
                                                 <input class="form-control" name="ref1Address" type="text" required
-                                                    value="<?php echo $row1['Address'] ?>"                                                    
+                                                    value="<?php echo $row1['Address'] ?>"
                                                     style="outline: none; margin-top: -12px;">
                                             </div>
                                         </div>
@@ -672,7 +948,7 @@ to get the desired effect
                                             <div class="form-group">
                                                 <p style="font-weight: bold">Name:</p>
                                                 <input class="form-control" name="ref2Name" type="text" required
-                                                    value="<?php echo $row1['Name'] ?>"    
+                                                    value="<?php echo $row1['Name'] ?>"
                                                     style="outline: none; margin-top: -12px;">
                                             </div>
                                         </div>
@@ -714,9 +990,15 @@ to get the desired effect
                                                 <p style="font-weight: bold">Do you have personal conveyance?</p>
                                                 <select class="form-control" name="personalconveyance"
                                                     style="outline: none; margin-top: -12px;">
-                                                    <option <?php echo ($row['PersonalConveyance']=="") ? 'selected' : '' ; ?> value="Select" selected disabled>Select</option>
-                                                    <option <?php echo ($row['PersonalConveyance']=="Yes") ? 'selected' : '' ; ?> value="Yes">Yes</option>
-                                                    <option <?php echo ($row['PersonalConveyance']=="No") ? 'selected' : '' ; ?> value="No">No</option>
+                                                    <option
+                                                        <?php echo ($row['PersonalConveyance']=="") ? 'selected' : '' ; ?>
+                                                        value="Select" selected disabled>Select</option>
+                                                    <option
+                                                        <?php echo ($row['PersonalConveyance']=="Yes") ? 'selected' : '' ; ?>
+                                                        value="Yes">Yes</option>
+                                                    <option
+                                                        <?php echo ($row['PersonalConveyance']=="No") ? 'selected' : '' ; ?>
+                                                        value="No">No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -724,7 +1006,7 @@ to get the desired effect
                                             <div class="form-group">
                                                 <p style="font-weight: bold">If Yes Then Car/Bike?:</p>
                                                 <input class="form-control" name="carbike" type="text"
-                                                    value = "<?php echo $row['YesThenCarBike'] ?>"
+                                                    value="<?php echo $row['YesThenCarBike'] ?>"
                                                     style="outline: none; margin-top: -12px;">
                                             </div>
                                         </div>
@@ -756,7 +1038,7 @@ to get the desired effect
                                                 <p style="font-weight: bold">Date:</p>
                                                 <input class="form-control" name="dateofsubmission" type="date" required
                                                     style="outline: none; margin-top: -12px;"
-                                                    value = "<?php echo $row['DateOfFormSubmission'] ?>"
+                                                    value="<?php echo $row['DateOfFormSubmission'] ?>"
                                                     min="<?php echo date('Y-m-d') ?>">
                                             </div>
                                         </div>
@@ -799,7 +1081,6 @@ to get the desired effect
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
@@ -870,10 +1151,6 @@ to get the desired effect
     // document.getElementsByName("dateofsubmission")[0].value = "2020-06-29";
 
 
-    function addsec2_qualification() {
-        $("#section2_qualification").clone().insertAfter("#section2_qualification");
-    }
-
     function delsec2_qualification() {
         if (document.getElementsByName('section2_qualification').length > 1)
             $("#section2_qualification").remove();
@@ -883,9 +1160,9 @@ to get the desired effect
 
     <!-- section 3 row insert and delete script start-->
     <script>
-    function addsec3_jobexperience() {
-        $("#section3_jobexperience").clone().insertAfter("#section3_jobexperience");
-    }
+    // function addsec3_jobexperience() {
+    //     $("#section3_jobexperience").clone().insertAfter("#section3_jobexperience");
+    // }
 
     function delsec3_jobexperience() {
         if (document.getElementsByName('section3_jobexperience').length > 1)
@@ -896,9 +1173,9 @@ to get the desired effect
 
     <!-- section 4 row insert and delete script start-->
     <script>
-    function addsec4_areaofinterest() {
-        $("#section4_areaofinterest").clone().insertAfter("#section4_areaofinterest");
-    }
+    // function addsec4_areaofinterest() {
+    //     $("#section4_areaofinterest").clone().insertAfter("#section4_areaofinterest");
+    // }
 
     function delsec4_areaofinterest() {
         if (document.getElementsByName('section4_areaofinterest').length > 1)
