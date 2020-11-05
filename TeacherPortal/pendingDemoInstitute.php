@@ -15,7 +15,7 @@ if(!isset($_SESSION['userrole'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Institute Panel | Dashboard</title>
+    <title>Teacher Panel | Dashboard</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -80,9 +80,9 @@ to get the desired effect
                 <div class="container-fluid">
 
                     <div class="row">
-                        <div class="col-lg-8 offset-lg-3">
+                        <div class="col-lg-7 offset-lg-3">
                             <br>
-                            <h2><b>Teacher Request For Institute Demo</b></h2>
+                            <h2><b>Institute Request For Teacher Demo</b></h2>
                         </div>
                         <?php
                         $count = 1;
@@ -93,13 +93,13 @@ to get the desired effect
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">S.No</th>
-                                        <th scope="col">Teacher</th>
-                                        <th scope="col">Requested Demo</th>
                                         <th scope="col">Institute</th>
+                                        <th scope="col">Requested Demo</th>
+                                        <th scope="col">Teacher</th>
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_teacherside.Id AS Demo_Teacher_Id, instituteregistrationform.Email AS Ins_Email, tutorform_section1.Email, requestdemo_teacherside.*, instituteregistrationform.*, tutorform_section1.*  FROM requestdemo_teacherside JOIN instituteregistrationform ON requestdemo_teacherside.Institute_Id = instituteregistrationform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` ="Scheduled" AND requestdemo_teacherside.`StatusByInstitute` = ""';
+                                $sql = 'SELECT requestdemo_instituteside.Id, instituteregistrationform.InstituteName, instituteregistrationform.ContactNo1, instituteregistrationform.Email AS Ins_Email , tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, tutorform_section1.TutorImage, ScheduledDateByAdmin FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.Id JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id WHERE requestdemo_instituteside.`Status` = "Scheduled" AND requestdemo_instituteside.`StatusByTeacher` = "" ';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>
@@ -109,6 +109,28 @@ to get the desired effect
                                             '.$count++.'
                                             </div>
                                         </th>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-11 offset-lg-1 text-left mt-5">
+                                                    <p> <b>Name:</b> &nbsp; '.$row['InstituteName'].'</p>
+                                                    <p> <b>Contact:</b> &nbsp; '.$row['ContactNo1'].' </p>
+                                                    <p> <b>Email:</b> &nbsp; '.$row['Ins_Email'].' </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-4 offset-lg-1">
+                                                    <input class="form-control text-center mt-4" id="scheduledDate_'.$row['Id'].'"
+                                                    type="date" readonly value="'.$row['ScheduledDateByAdmin'].'" style="width:250px" required>
+                                                    <br>
+                                                    <button type="button" name="" class="btn btn-success scheduledDemoInstituteTeacher" data-toggle="modal" data-target="#myModal1" data-id="Teacher" style="width:250px" value="'.$row['Id'].'" data-target="#myModal1" 
+                                                        style="width:100px;">Confirm</button>
+                                                    <br><br>
+                                                    <button class="btn btn-danger RejectButtonInstitute" data-toggle="modal" data-id="Teacher" data-target="#myModal2"   value="'.$row['Id'].'" type="button" style="width:250px">Reject</button>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-lg-11 offset-lg-1">
@@ -124,27 +146,6 @@ to get the desired effect
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-4 offset-lg-1">
-                                                    <input class="form-control text-center mt-4" id="scheduledDate_'.$row['Id'].'"
-                                                    type="date" readonly value="'.$row['ScheduledDateByAdmin'].'" style="width:250px" required>
-                                                    <br>
-                                                    <button type="button" name="" class="btn btn-success scheduledDemoInstituteTeacher" data-toggle="modal" data-target="#myModal1" data-id="Teacher" style="width:250px" value="'.$row['Demo_Teacher_Id'].'">Confirm</button>
-                                                    <br><br>
-                                                    <button class="btn btn-danger RejectButtonInstitute"  data-toggle="modal" data-id="Teacher" data-target="#myModal2" value="'.$row['Demo_Teacher_Id'].'" type="button" style="width:250px">Reject</button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-lg-11 offset-lg-1 text-left mt-5">
-                                                    <p> <b>Name:</b> &nbsp; '.$row['InstituteName'].'</p>
-                                                    <p> <b>Contact:</b> &nbsp; '.$row['ContactNo1'].' </p>
-                                                    <p> <b>Email:</b>  &nbsp; '.$row['Ins_Email'].' </p>
-                                                </div>
-                                            </div>
-                                        </td>
                                     </tr>';
                                 }
                                 echo'</tbody>
@@ -153,7 +154,6 @@ to get the desired effect
                     </div>
                     <!-- /.row -->
                     <br><br>
-
 
 
                     <!-- /.row -->
@@ -327,12 +327,12 @@ $('#ScheduledStatusRej').on('submit', function(e) {
     var obj = {};
     obj.ScheduledId = scheduledId;
     obj.Status = 'Rejected';
-    obj.Type = 'Institute';
+    obj.Type = 'Teacher';
     obj.Classes = '';
     obj.Subjects = '';
     obj.TuitionStartDate = '';
     obj.Fees = '';
-    obj.RejectedBy = 'Institute';
+    obj.RejectedBy = 'Teacher';
     obj.Description = $('#discriptionRej').val();
     obj.DaysOfTuition = '';
     runAjax(obj);
@@ -355,7 +355,7 @@ $('#ScheduledStatus').on('submit', function(e) {
     var scheduledId = $('#modalbox').val();
     var obj = {};
     obj.ScheduledId = scheduledId;
-    obj.Type = 'Institute';
+    obj.Type = 'Teacher';
     obj.Status = 'Confirmed';
     obj.Classes = $('#classes').val();
     obj.Subjects = $('#subjects').val();
@@ -368,10 +368,11 @@ $('#ScheduledStatus').on('submit', function(e) {
 
 })
 
+
 function runAjax(obj) {
     $.ajax({
         type: "POST",
-        url: "ScheduledByTeacher.php",
+        url: "ScheduledByInstitute.php",
         cache: false,
         data: JSON.stringify(obj),
         contentType: "json",
@@ -383,7 +384,6 @@ function runAjax(obj) {
     });
 }
 </script>
-
 <!-- waiting modal on click of Schedule button -->
 <script>
 // /$('.scheduledDemoStudentTeacher').modal({backdrop: 'static', keyboard: false})  

@@ -15,7 +15,7 @@ if(!isset($_SESSION['userrole'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Institute Panel | Dashboard</title>
+    <title>Teacher Panel | Dashboard</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -99,7 +99,7 @@ to get the desired effect
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_teacherside.Id AS Demo_Teacher_Id, instituteregistrationform.Email AS Ins_Email, tutorform_section1.Email, requestdemo_teacherside.*, instituteregistrationform.*, tutorform_section1.*  FROM requestdemo_teacherside JOIN instituteregistrationform ON requestdemo_teacherside.Institute_Id = instituteregistrationform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` ="Scheduled" AND requestdemo_teacherside.`StatusByInstitute` = ""';
+                                $sql = 'SELECT requestdemo_teacherside.Id AS Demo_Teacher_Id, instituteregistrationform.Email AS Ins_Email, tutorform_section1.Email, requestdemo_teacherside.*, instituteregistrationform.*, tutorform_section1.*  FROM requestdemo_teacherside JOIN instituteregistrationform ON requestdemo_teacherside.Institute_Id = instituteregistrationform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` ="Scheduled" AND requestdemo_teacherside.`StatusByTeacher` = ""';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>
@@ -327,12 +327,12 @@ $('#ScheduledStatusRej').on('submit', function(e) {
     var obj = {};
     obj.ScheduledId = scheduledId;
     obj.Status = 'Rejected';
-    obj.Type = 'Institute';
+    obj.Type = 'Teacher';
     obj.Classes = '';
     obj.Subjects = '';
     obj.TuitionStartDate = '';
     obj.Fees = '';
-    obj.RejectedBy = 'Institute';
+    obj.RejectedBy = 'Teacher';
     obj.Description = $('#discriptionRej').val();
     obj.DaysOfTuition = '';
     runAjax(obj);
@@ -355,7 +355,7 @@ $('#ScheduledStatus').on('submit', function(e) {
     var scheduledId = $('#modalbox').val();
     var obj = {};
     obj.ScheduledId = scheduledId;
-    obj.Type = 'Institute';
+    obj.Type = 'Teacher';
     obj.Status = 'Confirmed';
     obj.Classes = $('#classes').val();
     obj.Subjects = $('#subjects').val();
@@ -371,7 +371,7 @@ $('#ScheduledStatus').on('submit', function(e) {
 function runAjax(obj) {
     $.ajax({
         type: "POST",
-        url: "ScheduledByTeacher.php",
+        url: "ScheduledByTeacherInstitute.php",
         cache: false,
         data: JSON.stringify(obj),
         contentType: "json",

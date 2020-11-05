@@ -124,7 +124,7 @@ to get the desired effect
                                                     <input class="form-control text-center mt-4" id="scheduledDate_'.$row['Id'].'"
                                                     type="date" readonly value="'.$row['ScheduledDateByAdmin'].'" style="width:250px" required>
                                                     <br>
-                                                    <button type="button" name="" class="btn btn-success scheduledDemoInstituteTeacher" data-toggle="modal" data-id="Teacher" style="width:250px" value="'.$row['Id'].'" data-target="#myModal1" 
+                                                    <button type="button" name="" class="btn btn-success scheduledDemoInstituteTeacher" data-toggle="modal" data-target="#myModal1" data-id="Teacher" style="width:250px" value="'.$row['Id'].'" data-target="#myModal1" 
                                                         style="width:100px;">Confirm</button>
                                                     <br><br>
                                                     <button class="btn btn-danger RejectButtonInstitute" data-toggle="modal" data-id="Teacher" data-target="#myModal2"   value="'.$row['Id'].'" type="button" style="width:250px">Reject</button>
@@ -166,7 +166,7 @@ to get the desired effect
         <!-- /.content-wrapper -->
 
         <!-- waiting response modal on click of schedule button -->
-        <div id="myModal1" class="modal fade" role="dialog">
+        <div id="myModalWait" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm" style="margin-top: 270px;">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -277,8 +277,6 @@ to get the desired effect
                 </div>
             </div>
         </div>
-        <!-- Reject button Modal Box end -->
-
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -314,35 +312,60 @@ to get the desired effect
 
 
 <script>
-// Insitute reject Teacher request Demo
+// Admin reject student --> Teacher request Demo
 $(document).on('click', '.RejectButtonInstitute', function() {
-    var ScheduledId = $(this).val();
-    var obj = {};
-    obj.ScheduledId = ScheduledId;
-    obj.Type = 'Institute';
-    obj.Status = 'Rejected';
+    $('#modalboxrej').val($(this).val());
+})
 
-    var con = confirm("Are You Sure Want To Reject This Demo Request!");
-    if (con) {
-        runAjax(obj);
-    }
+$('#ScheduledStatusRej').on('submit', function(e) {
+    e.preventDefault();
+    $('#myModalWait').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+    var scheduledId = $('#modalboxrej').val();
+    var obj = {};
+    obj.ScheduledId = scheduledId;
+    obj.Status = 'Rejected';
+    obj.Type = 'Institute';
+    obj.Classes = '';
+    obj.Subjects = '';
+    obj.TuitionStartDate = '';
+    obj.Fees = '';
+    obj.RejectedBy = 'Institute';
+    obj.Description = $('#discriptionRej').val();
+    obj.DaysOfTuition = '';
+    runAjax(obj);
+
 })
 </script>
 
 <script>
-//Insitute confirm teacher request Demo  
+//Sheduled demo between student --> teacher  
 $(document).on('click', '.scheduledDemoInstituteTeacher', function() {
-    $('#myModal1').modal({
+    $('#modalbox').val($(this).val());
+})
+
+$('#ScheduledStatus').on('submit', function(e) {
+    e.preventDefault();
+    $('#myModalWait').modal({
         backdrop: 'static',
         keyboard: false
     })
-    var scheduledId = $(this).val();
+    var scheduledId = $('#modalbox').val();
     var obj = {};
     obj.ScheduledId = scheduledId;
-    obj.Status = 'Confirmed';
     obj.Type = 'Institute';
-    obj.ScheduledDate = $('#scheduledDate_' + scheduledId).val();
+    obj.Status = 'Confirmed';
+    obj.Classes = $('#classes').val();
+    obj.Subjects = $('#subjects').val();
+    obj.TuitionStartDate = $('#startingdate').val();
+    obj.Fees = $('#fees').val();
+    obj.RejectedBy = '';
+    obj.Description = '';
+    obj.DaysOfTuition = $('#daysoftution').val();
     runAjax(obj);
+
 })
 
 
@@ -361,7 +384,6 @@ function runAjax(obj) {
     });
 }
 </script>
-
 <!-- waiting modal on click of Schedule button -->
 <script>
 // /$('.scheduledDemoStudentTeacher').modal({backdrop: 'static', keyboard: false})  
