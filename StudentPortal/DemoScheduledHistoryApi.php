@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $obj = new \StdClass;
 
     $count = 1;
-    $sql = 'SELECT requestdemo_studentside.*, StudentName, FullName FROM requestdemo_studentside JOIN studenttutorform ON requestdemo_studentside.Student_Id = studenttutorform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_studentside.TeacherId WHERE requestdemo_studentside.Status = "Scheduled" AND tutorform_section1.TeacherId = ' . $userid;
+    $sql = 'SELECT requestdemo_studentside.*, StudentName, FullName FROM requestdemo_studentside JOIN studenttutorform ON requestdemo_studentside.Student_Id = studenttutorform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_studentside.TeacherId WHERE requestdemo_studentside.Status = "Scheduled" AND  studenttutorform.UserId = ' . $userid;
     $data = [];    
     // echo $sql;
     $result = mysqli_query($conn, $sql);
