@@ -99,7 +99,7 @@ to get the desired effect
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_studentside.Id, studenttutorform.StudentName, studenttutorform.ContactNo1, studenttutorform.StudentEmail, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, tutorform_section1.TutorImage, ScheduledDateByAdmin FROM requestdemo_studentside JOIN tutorform_section1 ON requestdemo_studentside.TeacherId = tutorform_section1.Id JOIN studenttutorform ON studenttutorform.Id = requestdemo_studentside.Student_Id WHERE requestdemo_studentside.`Status` = "Scheduled" AND requestdemo_studentside.`StatusByStudent` = ""';
+                                $sql = 'SELECT requestdemo_studentside.Id, studenttutorform.StudentName, studenttutorform.ContactNo1, studenttutorform.StudentEmail, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, tutorform_section1.TutorImage, ScheduledDateByAdmin FROM requestdemo_studentside JOIN tutorform_section1 ON requestdemo_studentside.TeacherId = tutorform_section1.Id JOIN studenttutorform ON studenttutorform.Id = requestdemo_studentside.Student_Id WHERE requestdemo_studentside.`Status` = "Scheduled" AND requestdemo_studentside.`StatusByStudent` = "" AND requestdemo_studentside.`StatusByTeacher` <> "Rejected"';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>
@@ -336,6 +336,7 @@ $('#ScheduledStatusRej').on('submit', function(e) {
     obj.Fees = '';
     obj.RejectedBy = 'Student';
     obj.Description = $('#discriptionRej').val();
+    obj.DaysOfTuition = '';
     runAjax(obj);
 
 })

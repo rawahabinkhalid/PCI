@@ -20,6 +20,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
 
+            $classes = $jsonObj['Classes'];
+            $subjects = $jsonObj['Subjects'];
+            $startingdate = $jsonObj['TuitionStartDate'];
+            $fees = $jsonObj['Fees'];
+            $daysoftution = $jsonObj['DaysOfTuition'];
+            $rejectby = $jsonObj['RejectedBy'];
+            $description = $jsonObj['Description'];
+
+            $sql = 'INSERT INTO demostatus (`DemoId`,`DemoTeacherId`,`Type`,`Student_Confirm`,`Classes`,`Subjects`,`StartingDate`,`Fees`,`DaysOfTution`,`RejectedBy`,`Description`,`Status`) VALUES ("'.$jsonObj['ScheduledId'].'","'.$jsonObj['ScheduledId'].'","Student","1","'.$classes.'","'.$subjects.'","'.$startingdate.'","'.$fees.'","'.$daysoftution.'","'.$rejectby.'","'.$description.'","'.$jsonObj['Status'].'")';
+            $result = mysqli_query($conn, $sql);
+
             $sql = "UPDATE requestdemo_teacherside SET `StatusByStudent`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
             if($row['StatusByTeacher'] == 'Confirmed' && ($row['Status'] == 'Confirmed' || $row['Status'] == 'Scheduled')) {
             // if($row['StatusByTeacher'] == 'Confirmed') {
