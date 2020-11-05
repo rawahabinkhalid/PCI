@@ -260,7 +260,7 @@ to get the desired effect
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_instituteside.Id, instituteregistrationform.InstituteName, instituteregistrationform.ContactNo1, instituteregistrationform.Email, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, tutorform_section1.TutorImage FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.Id JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id WHERE requestdemo_instituteside.`Status` = "Pending"';
+                                $sql = 'SELECT requestdemo_instituteside.Id, instituteregistrationform.InstituteName, instituteregistrationform.ContactNo1, instituteregistrationform.Email AS Ins_Email, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, tutorform_section1.TutorImage FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.Id JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id WHERE requestdemo_instituteside.`Status` = "Pending"';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>
@@ -275,7 +275,7 @@ to get the desired effect
                                                 <div class="col-lg-11 offset-lg-1 text-left mt-5">
                                                     <p> <b>Name:</b> &nbsp; '.$row['InstituteName'].'</p>
                                                     <p> <b>Contact:</b> &nbsp; '.$row['ContactNo1'].' </p>
-                                                    <p> <b>Email:</b> &nbsp; '.$row['Email'].' </p>
+                                                    <p> <b>Email:</b> &nbsp; '.$row['Ins_Email'].' </p>
                                                 </div>
                                             </div>
                                         </td>
@@ -414,7 +414,7 @@ to get the desired effect
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_teacherside.Id, tutorform_section1.TutorImage, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, instituteregistrationform.InstituteName, instituteregistrationform.ContactNo1, instituteregistrationform.Email FROM requestdemo_teacherside JOIN instituteregistrationjobs ON instituteregistrationjobs.Id = requestdemo_teacherside.JobId JOIN instituteregistrationform ON requestdemo_teacherside.Institute_Id = instituteregistrationform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` = "Pending"';
+                                $sql = 'SELECT requestdemo_teacherside.Id, tutorform_section1.TutorImage, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email AS Tut_Email, instituteregistrationform.InstituteName, instituteregistrationform.ContactNo1, instituteregistrationform.Email FROM requestdemo_teacherside JOIN instituteregistrationjobs ON instituteregistrationjobs.Id = requestdemo_teacherside.JobId JOIN instituteregistrationform ON requestdemo_teacherside.Institute_Id = instituteregistrationform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` = "Pending"';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>
@@ -434,7 +434,7 @@ to get the desired effect
                                                     <div class="text-center mt-2">
                                                         <p> <b>Name:</b> &nbsp; '.$row['FullName'].' <br>
                                                         <b>Contact:</b> &nbsp; '.$row['PhoneNo1'].' <br>
-                                                        <b>Email:</b> &nbsp; '.$row['Email'].'  </p>
+                                                        <b>Email:</b> &nbsp; '.$row['Tut_Email'].'  </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -474,6 +474,24 @@ to get the desired effect
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+
+        <!-- waiting response modal on click of schedule button -->
+        <div id="myModal1" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm" style="margin-top: 270px;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Wait..!</p>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -605,6 +623,10 @@ $(document).on('click', '.RejectButtonTeacherInstitute', function() {
 <script>
 //Sheduled demo between student --> teacher  
 $(document).on('click', '.scheduledDemoStudentTeacher', function() {
+    $('#myModal1').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     var scheduledId = $(this).val();
     var obj = {};
     obj.ScheduledId = scheduledId;
@@ -615,6 +637,10 @@ $(document).on('click', '.scheduledDemoStudentTeacher', function() {
 
 //Sheduled demo between Institute --> teacher  
 $(document).on('click', '.scheduledDemoInstituteTeacher', function() {
+    $('#myModal1').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     var scheduledId = $(this).val();
     var obj = {};
     obj.ScheduledId = scheduledId;
@@ -625,6 +651,10 @@ $(document).on('click', '.scheduledDemoInstituteTeacher', function() {
 
 //Sheduled demo between teacher --> student  
 $(document).on('click', '.scheduledDemoTeacherStudent', function() {
+    $('#myModal1').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     var scheduledId = $(this).val();
     var obj = {};
     obj.ScheduledId = scheduledId;
@@ -635,6 +665,10 @@ $(document).on('click', '.scheduledDemoTeacherStudent', function() {
 
 //Sheduled demo between teacher --> Institute 
 $(document).on('click', '.scheduledDemoTeacherInstitute', function() {
+    $('#myModal1').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     var scheduledId = $(this).val();
     var obj = {};
     obj.ScheduledId = scheduledId;
@@ -657,6 +691,11 @@ function runAjax(obj) {
         }
     });
 }
+</script>
+
+<!-- waiting modal on click of Schedule button -->
+<script>
+// /$('.scheduledDemoStudentTeacher').modal({backdrop: 'static', keyboard: false})  
 </script>
 
 </html>

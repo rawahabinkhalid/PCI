@@ -56,7 +56,7 @@ include_once('../conn.php');
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-check-double"></i>
                         <p>
-                            Tution Status
+                            Confirm Tution
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -71,6 +71,33 @@ include_once('../conn.php');
                         </li>
                         <li class="nav-item">
                             <a href="ConfirmInstitutesDemo.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Institutes
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-ban"></i>
+                        <p>
+                            Rejected Tution
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="RejectedStudentsDemo.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Students
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="RejectedInstitutesDemo.php" class="nav-link">
                                 <i class="nav-icon fas fa-circle"></i>
                                 <p>
                                     Institutes

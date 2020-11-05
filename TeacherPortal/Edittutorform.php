@@ -28,7 +28,6 @@ if(!isset($_SESSION['userrole'])){
     <script src="../plugins/jquery/jquery.min.js"></script>
     <script>
     function addsec2_qualification() {
-        // $("#section2_qualification").clone().insertAfter("#section2_qualification");
         content = '';
         content += '    <div class="row" id="section2_qualification" name="section2_qualification"  \
                             style="padding: 0px 5px;">                                              \
@@ -214,7 +213,7 @@ to get the desired effect
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <form action="tutorformsubmit.php" id="tutorform" enctype="multipart/form-data">
+                    <form action="EdittutorformSubmit.php" id="edittutorform" enctype="multipart/form-data">
                         <div class="row">
                             <?php
                             $sql = "SELECT * FROM tutorform_section1 WHERE `TeacherId` = ".$_SESSION['userid']." ";
@@ -511,12 +510,12 @@ to get the desired effect
                                     </div>
                                     <div id="qualification_data">
                                         <?php
-                                    $sqlQualification = 'SELECT * FROM tutorform_section2 WHERE UserId = ' . $row['Id'];
-                                    $resultQualification = $conn->query($sqlQualification);
-                                    $counter = 0;
-                                    if($resultQualification->num_rows > 0) {
-                                        while($rowQualification = $resultQualification->fetch_assoc()) {
-                                    ?>
+                                        $sqlQualification = 'SELECT * FROM tutorform_section2 WHERE UserId = ' . $row['Id'];
+                                        $resultQualification = $conn->query($sqlQualification);
+                                        $counter = 0;
+                                        if($resultQualification->num_rows > 0) {
+                                            while($rowQualification = $resultQualification->fetch_assoc()) {
+                                        ?>
 
                                         <div class="row" id="section2_qualification" name="section2_qualification"
                                             style="padding: 0px 5px;">
@@ -616,12 +615,12 @@ to get the desired effect
                                     </div>
                                     <div id="experience_data">
                                         <?php
-                                    $sqlExperience = 'SELECT * FROM tutorform_section3 WHERE UserId = ' . $row['Id'];
-                                    $resultExperience = $conn->query($sqlExperience);
-                                    $counter = 0;
-                                    if($resultExperience->num_rows > 0) {
-                                        while($rowExperience = $resultExperience->fetch_assoc()) {
-                                    ?>
+                                        $sqlExperience = 'SELECT * FROM tutorform_section3 WHERE UserId = ' . $row['Id'];
+                                        $resultExperience = $conn->query($sqlExperience);
+                                        $counter = 0;
+                                        if($resultExperience->num_rows > 0) {
+                                            while($rowExperience = $resultExperience->fetch_assoc()) {
+                                        ?>
                                         <div class="row" id="section3_jobexperience" name="section3_jobexperience"
                                             style="padding: 0px 5px;">
                                             <div class="col-sm-4">
@@ -700,12 +699,12 @@ to get the desired effect
 
                                     <div id="aoi_data">
                                         <?php
-                                    $sqlAOI = 'SELECT * FROM tutorform_section4 WHERE UserId = ' . $row['Id'];
-                                    $resultAOI = $conn->query($sqlAOI);
-                                    $counter = 0;
-                                    if($resultAOI->num_rows > 0) {
-                                        while($rowAOI = $resultAOI->fetch_assoc()) {
-                                    ?>
+                                        $sqlAOI = 'SELECT * FROM tutorform_section4 WHERE UserId = ' . $row['Id'];
+                                        $resultAOI = $conn->query($sqlAOI);
+                                        $counter = 0;
+                                        if($resultAOI->num_rows > 0) {
+                                            while($rowAOI = $resultAOI->fetch_assoc()) {
+                                        ?>
 
                                         <div class="row" id="section4_areaofinterest" name="section4_areaofinterest"
                                             style="padding: 0px 5px;">
@@ -1188,7 +1187,7 @@ to get the desired effect
 
 
 
-<!-- *************************** api Teacher Tutor form ************************* -->
+<!-- *************************** api Eidt Teacher Tutor form ************************* -->
 <!-- jason seralized data -->
 <script type="text/javascript" src="../dist/js/jquery.serializejson.js"></script>
 <script>
@@ -1242,7 +1241,7 @@ $("#submit").click(function(e) {
 
     let allAreFilled = true;
     var unfilledInput = '';
-    document.getElementById("tutorform").querySelectorAll("[required]").forEach(function(i) {
+    document.getElementById("edittutorform").querySelectorAll("[required]").forEach(function(i) {
         if (!allAreFilled) return;
         patternvalid = true;
         if (document.getElementsByName(i.name)[0].pattern != undefined)
@@ -1277,15 +1276,15 @@ $("#submit").click(function(e) {
     if (allAreFilled) {
         //     alert('Fill all the fields');
         // } else {
-        var form = $('#tutorform');
+        var form = $('#edittutorform');
         var url = form.attr('action');
         console.log(url)
 
         //jason serialised data start
-        var data = $('#tutorform').serializeJSON();
+        var data = $('#edittutorform').serializeJSON();
         data.documents = docBase64;
-        console.log("tutorform", data);
-        console.log("tutorform", JSON.stringify(data));
+        console.log("edittutorform", data);
+        console.log("edittutorform", JSON.stringify(data));
         //jason serialised data end
 
         $.ajax({
@@ -1301,7 +1300,7 @@ $("#submit").click(function(e) {
                 if (obj.userid == null)
                     alert("Error");
 
-                window.location.href = "tutorform.php";
+                window.location.href = "Edittutorform.php";
             }
 
         });
