@@ -120,6 +120,31 @@ include_once('../conn.php');
                         </li>
                     </ul>
                 </li>
+
+                 <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-edit"></i>
+                        <p>
+                            Scheduled Demo
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="pendingDemo.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>By Institute</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="pendingDemoTeacher.php" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>By Teacher</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item has-treeview">
                     <a href="SendQuery.php" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
