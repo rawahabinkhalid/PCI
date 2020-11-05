@@ -336,6 +336,7 @@ $('#ScheduledStatusRej').on('submit', function(e) {
     obj.Fees = '';
     obj.RejectedBy = 'Student';
     obj.Description = $('#discriptionRej').val();
+    obj.DaysOfTuition = '';
     runAjax(obj);
 
 })
