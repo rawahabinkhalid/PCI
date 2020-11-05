@@ -19,12 +19,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
 
-            $sql = "UPDATE requestdemo_studentside SET `StatusByStudent`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
-            if($row['StatusByTeacher'] == 'Confirmed' && ($row['Status'] == 'Confirmed' || $row['Status'] == 'Scheduled')) {
-            // if($row['StatusByTeacher'] == 'Confirmed') {
-                $sql = "UPDATE requestdemo_studentside SET `Status`='".$jsonObj['Status']."', `StatusByStudent`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
-            } else if ($row['StatusByTeacher'] == 'Rejected' || $jsonObj['Status'] == 'Rejected') {
-                $sql = "UPDATE requestdemo_studentside SET `Status`='Rejected', `StatusByStudent`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
+            $sql = "UPDATE requestdemo_studentside SET `StatusByTeacher`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
+            if($row['StatusByStudent'] == 'Confirmed' && ($row['Status'] == 'Confirmed' || $row['Status'] == 'Scheduled')) {
+                $sql = "UPDATE requestdemo_studentside SET `Status`='".$jsonObj['Status']."', `StatusByTeacher`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
+            } else if ($row['StatusByStudent'] == 'Rejected' || $jsonObj['Status'] == 'Rejected') {
+                $sql = "UPDATE requestdemo_studentside SET `Status`='Rejected', `StatusByTeacher`='".$jsonObj['Status']."' WHERE `Id` = ".$jsonObj['ScheduledId'];
             }
             if(mysqli_query($conn, $sql)) {
                 $obj->message = 'Successfully saved';
