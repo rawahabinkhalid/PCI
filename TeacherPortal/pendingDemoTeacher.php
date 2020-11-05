@@ -15,7 +15,7 @@ if(!isset($_SESSION['userrole'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Student Panel | Dashboard</title>
+    <title>Teacher Panel | Dashboard</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -99,7 +99,7 @@ to get the desired effect
                                     </tr>
                                 </thead>';
                                 
-                                $sql = 'SELECT requestdemo_teacherside.Id, tutorform_section1.TutorImage, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, studenttutorform.StudentName, studenttutorform.ContactNo1, studenttutorform.StudentEmail, ScheduledDateByAdmin FROM requestdemo_teacherside JOIN studenttutorform ON requestdemo_teacherside.Student_Id = studenttutorform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` = "Scheduled" AND requestdemo_teacherside.`StatusByStudent` = ""';
+                                $sql = 'SELECT requestdemo_teacherside.Id, tutorform_section1.TutorImage, tutorform_section1.FullName, tutorform_section1.PhoneNo1, tutorform_section1.Email, studenttutorform.StudentName, studenttutorform.ContactNo1, studenttutorform.StudentEmail, ScheduledDateByAdmin FROM requestdemo_teacherside JOIN studenttutorform ON requestdemo_teacherside.Student_Id = studenttutorform.Id JOIN tutorform_section1 ON tutorform_section1.Id = requestdemo_teacherside.TeacherId WHERE requestdemo_teacherside.`Status` = "Scheduled" AND requestdemo_teacherside.`StatusByTeacher` = ""';
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                 echo'<tbody>

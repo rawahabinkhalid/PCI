@@ -124,9 +124,10 @@ to get the desired effect
                                                     <input class="form-control text-center mt-4" id="scheduledDate_'.$row['Id'].'"
                                                     type="date" readonly value="'.$row['ScheduledDateByAdmin'].'" style="width:250px" required>
                                                     <br>
-                                                    <button type="button" name="" class="btn btn-success scheduledDemoStudentTeacher" style="width:250px" value="'.$row['Id'].'">Confirm</button>
+                                                    <button type="button" name="" class="btn btn-success scheduledDemoStudentTeacher" data-toggle="modal" data-id="Teacher" style="width:250px" value="'.$row['Id'].'" data-target="#myModal1" 
+                                                        style="width:100px;">Confirm</button>
                                                     <br><br>
-                                                    <button class="btn btn-danger RejectButtonStudent"  value="'.$row['Id'].'" type="button" style="width:250px">Reject</button>
+                                                    <button class="btn btn-danger RejectButtonStudent" data-toggle="modal" data-id="Teacher" data-target="#myModal2"   value="'.$row['Id'].'" type="button" style="width:250px">Reject</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -165,7 +166,7 @@ to get the desired effect
         <!-- /.content-wrapper -->
 
         <!-- waiting response modal on click of schedule button -->
-        <div id="myModal1" class="modal fade" role="dialog">
+        <div id="myModalWait" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm" style="margin-top: 270px;">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -181,6 +182,102 @@ to get the desired effect
                 </div>
             </div>
         </div>
+
+        <!-- Confirm button Modal Box start -->
+        <div id="myModal1" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title bg-dark text-white w-100 text-center">Confirmation</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <form id="ScheduledStatus">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Classes:</p>
+                                        <input class="form-control" id="classes" name="classes" type="text" required
+                                            style="outline: none; margin-top: -12px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Subjects:</p>
+                                        <input class="form-control" id="subjects" name="subjects" type="text" required
+                                            style="outline: none; margin-top: -12px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Starting Tution Date:</p>
+                                        <input class="form-control" id="startingdate" name="startingdate" type="date"
+                                            required style="outline: none; margin-top: -12px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Fees:</p>
+                                        <input class="form-control" id="fees" name="fees" type="text" required
+                                            style="outline: none; margin-top: -12px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Days Of Tution:</p>
+                                        <input class="form-control" id="daysoftution" name="daysoftution" type="text"
+                                            required style="outline: none; margin-top: -12px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="modalbox" class="btn btn-primary"
+                                style="width: 100px;">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                style="width: 100px;">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Confirm button Modal Box end -->
+
+        <!-- Reject button Modal Box start -->
+        <div id="myModal2" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title bg-dark text-white w-100 text-center">Rejected Reason</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <form id="ScheduledStatusRej">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <p style="font-weight: bold">Description:</p>
+                                        <textarea class="form-control" id="discriptionRej" name="discription"
+                                            type="text" required style="outline: none; margin-top: -12px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="modalboxrej" class="btn btn-primary"
+                                style="width: 100px;">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                style="width: 100px;">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Reject button Modal Box end -->
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -219,33 +316,57 @@ to get the desired effect
 <script>
 // Admin reject student --> Teacher request Demo
 $(document).on('click', '.RejectButtonStudent', function() {
-    var ScheduledId = $(this).val();
-    var obj = {};
-    obj.ScheduledId = ScheduledId;
-    obj.Type = 'Student';
-    obj.Status = 'Rejected';
+    $('#modalboxrej').val($(this).val());
+})
 
-    var con = confirm("Are You Sure Want To Reject This Demo Request!");
-    if (con) {
-        runAjax(obj);
-    }
+$('#ScheduledStatusRej').on('submit', function(e) {
+    e.preventDefault();
+    $('#myModalWait').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+    var scheduledId = $('#modalboxrej').val();
+    var obj = {};
+    obj.ScheduledId = scheduledId;
+    obj.Status = 'Rejected';
+    obj.Type = 'Student';
+    obj.Classes = '';
+    obj.Subjects = '';
+    obj.TuitionStartDate = '';
+    obj.Fees = '';
+    obj.RejectedBy = 'Student';
+    obj.Description = $('#discriptionRej').val();
+    runAjax(obj);
+
 })
 </script>
 
 <script>
 //Sheduled demo between student --> teacher  
 $(document).on('click', '.scheduledDemoStudentTeacher', function() {
-    $('#myModal1').modal({
+    $('#modalbox').val($(this).val());
+})
+
+$('#ScheduledStatus').on('submit', function(e) {
+    e.preventDefault();
+    $('#myModalWait').modal({
         backdrop: 'static',
         keyboard: false
     })
-    var scheduledId = $(this).val();
+    var scheduledId = $('#modalbox').val();
     var obj = {};
     obj.ScheduledId = scheduledId;
-    obj.Status = 'Confirmed';
     obj.Type = 'Student';
-    obj.ScheduledDate = $('#scheduledDate_' + scheduledId).val();
+    obj.Status = 'Confirmed';
+    obj.Classes = $('#classes').val();
+    obj.Subjects = $('#subjects').val();
+    obj.TuitionStartDate = $('#startingdate').val();
+    obj.Fees = $('#fees').val();
+    obj.RejectedBy = '';
+    obj.Description = '';
+    obj.DaysOfTuition = $('#daysoftution').val();
     runAjax(obj);
+
 })
 
 
