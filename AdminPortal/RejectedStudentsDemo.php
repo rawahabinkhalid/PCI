@@ -107,8 +107,9 @@ to get the desired effect
                                         <th scope="col">Student Name</th>
                                         <th scope="col">Class</th>
                                         <th scope="col">Teacher Name</th>
-                                        <th scope="col">Starting Date</th>
+                                        <th scope="col">Rejected Date</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Rejected By</th>
                                         <th scope="col">Change Status</th>
                                     </tr>
                                 </thead>
@@ -116,7 +117,7 @@ to get the desired effect
                                     <?php
                             
                                 $count = 1;    
-                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Rejected" AND Student_Confirm = 1';
+                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Rejected" ';
                                 $result = mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_assoc($result)){
                                         $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,studenttutorform.UserId,studenttutorform.StudentName,studenttutorform.Class,requestdemo_studentside.* FROM requestdemo_studentside JOIN tutorform_section1 ON requestdemo_studentside.TeacherId = tutorform_section1.TeacherId JOIN studenttutorform ON studenttutorform.Id = requestdemo_studentside.Student_Id WHERE requestdemo_studentside.Id = '.$row['DemoId'];
@@ -149,7 +150,7 @@ to get the desired effect
                                             <td>
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <p>'.$row['StartingDate'].'</p>
+                                                        <p>'.$row1['DefultDateTime'].'</p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -157,6 +158,13 @@ to get the desired effect
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <p>'.$row['Status'].'</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <p>'.$row['RejectedBy'].'</p>
                                                     </div>
                                                 </div>
                                             </td>

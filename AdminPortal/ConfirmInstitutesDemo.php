@@ -116,10 +116,10 @@ to get the desired effect
                                     <?php
                             
                                 $count = 1;    
-                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Confirmed" AND Student_Confirm = 0';
+                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Confirmed" ';
                                 $result = mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_assoc($result)){
-                                        $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,instituteregistrationform.UserId,instituteregistrationform.InstituteName,instituteregistrationjobs.Class,requestdemo_instituteside.* FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.TeacherId JOIN studenttutorform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id WHERE requestdemo_instituteside.Id = '.$row['DemoId'];
+                                        $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,instituteregistrationform.UserId,instituteregistrationform.InstituteName,instituteregistrationjobs.Class,requestdemo_instituteside.* FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.Id JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id JOIN instituteregistrationjobs ON instituteregistrationjobs.Instituteregform_Id = instituteregistrationform.Id WHERE requestdemo_instituteside.Id = '.$row['DemoId'];
                                         $resultName = mysqli_query($conn, $sqlGetName);
                                         $row1 = mysqli_fetch_assoc($resultName);
                                     echo ' 

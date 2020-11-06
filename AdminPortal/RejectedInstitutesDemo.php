@@ -107,8 +107,9 @@ to get the desired effect
                                         <th scope="col">Institute Name</th>
                                         <th scope="col">Class</th>
                                         <th scope="col">Teacher Name</th>
-                                        <th scope="col">Starting Date</th>
+                                        <th scope="col">Rejected Date</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Rejected By</th>
                                         <th scope="col">Change Status</th>
                                     </tr>
                                 </thead>
@@ -116,10 +117,10 @@ to get the desired effect
                                     <?php
                             
                                 $count = 1;    
-                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Rejected" AND Student_Confirm = 0';
+                                $sql = 'SELECT * FROM demostatus WHERE `Status` = "Rejected" ';
                                 $result = mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_assoc($result)){
-                                        $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,instituteregistrationform.UserId,instituteregistrationform.InstituteName,instituteregistrationjobs.Class,requestdemo_instituteside.* FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.TeacherId JOIN studenttutorform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id WHERE requestdemo_instituteside.Id = '.$row['DemoId'];
+                                    $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,instituteregistrationform.UserId,instituteregistrationform.InstituteName,instituteregistrationjobs.Class,requestdemo_instituteside.* FROM requestdemo_instituteside JOIN tutorform_section1 ON requestdemo_instituteside.TeacherId = tutorform_section1.Id JOIN instituteregistrationform ON instituteregistrationform.Id = requestdemo_instituteside.Institute_Id JOIN instituteregistrationjobs ON instituteregistrationjobs.Instituteregform_Id = instituteregistrationform.Id WHERE requestdemo_instituteside.Id = '.$row['DemoId'];
                                         $resultName = mysqli_query($conn, $sqlGetName);
                                         $row1 = mysqli_fetch_assoc($resultName);
                                     echo ' 
@@ -149,7 +150,7 @@ to get the desired effect
                                             <td>
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <p>'.$row['StartingDate'].'</p>
+                                                        <p>'.$row['DefaultDateTime'].'</p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -157,6 +158,13 @@ to get the desired effect
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <p>'.$row['Status'].'</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <p>'.$row['RejectedBy'].'</p>
                                                     </div>
                                                 </div>
                                             </td>

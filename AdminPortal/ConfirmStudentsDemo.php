@@ -119,7 +119,7 @@ to get the desired effect
                                 $sql = 'SELECT * FROM demostatus WHERE `Status` = "Confirmed" AND Student_Confirm = 1';
                                 $result = mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_assoc($result)){
-                                        $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,studenttutorform.UserId,studenttutorform.StudentName,studenttutorform.Class,requestdemo_studentside.* FROM requestdemo_studentside JOIN tutorform_section1 ON requestdemo_studentside.TeacherId = tutorform_section1.TeacherId JOIN studenttutorform ON studenttutorform.Id = requestdemo_studentside.Student_Id WHERE requestdemo_studentside.Id = '.$row['DemoId'];
+                                        $sqlGetName = 'SELECT tutorform_section1.TeacherId,tutorform_section1.FullName,studenttutorform.UserId,studenttutorform.StudentName,studenttutorform.Class,requestdemo_studentside.* FROM requestdemo_studentside JOIN tutorform_section1 ON requestdemo_studentside.TeacherId = tutorform_section1.Id JOIN studenttutorform ON studenttutorform.Id = requestdemo_studentside.Student_Id WHERE requestdemo_studentside.Id = '.$row['DemoId'];
                                         $resultName = mysqli_query($conn, $sqlGetName);
                                         $row1 = mysqli_fetch_assoc($resultName);
                                     echo ' 

@@ -381,7 +381,7 @@ function runAjax(obj) {
         contentType: "json",
         success: function(data) {
             console.log(data);
-            window.open('index.php', '_self');
+            window.open('pendingDemoTeacher.php', '_self');
 
         }
     });
